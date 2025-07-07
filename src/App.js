@@ -1,5 +1,6 @@
 import React from 'react';
-import { Routes, Route, HashRouter as Router } from 'react-router-dom';
+// The 'Router' import has been removed from this line
+import { Routes, Route } from 'react-router-dom';
 import StudyMode from './StudyMode';
 import QuizMode from './components/QuizMode';
 
