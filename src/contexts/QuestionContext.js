@@ -8,7 +8,7 @@ export const QuestionProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('/tests.json')
+    fetch(`${process.env.PUBLIC_URL}/tests.json`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Failed to fetch questions');

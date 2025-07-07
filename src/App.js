@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter as Router } from 'react-router-dom';
 import StudyMode from './StudyMode';
 import QuizMode from './components/QuizMode';
 
