@@ -1,1 +1,1 @@
-fix: Use legacy-peer-deps to resolve dependency conflict
+fix: Set PUBLIC_URL for GitHub Pages build

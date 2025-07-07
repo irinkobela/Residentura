@@ -2,7 +2,7 @@
   "name": "residentura-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://irinkobela.github.io/residentura",
+  "homepage": "/Residentura",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "PUBLIC_URL=/residentura react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
