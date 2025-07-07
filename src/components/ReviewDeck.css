@@ -1,0 +1,50 @@
+/* ReviewDeck.css */
+
+.review-deck-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  background-color: var(--bg-secondary-light);
+  color: var(--text-primary-dark);
+  border-radius: 1rem;
+  border: 1px solid var(--border-primary-light);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+body.dark-mode .review-deck-container {
+  background-color: var(--bg-secondary-dark);
+  color: var(--text-primary-dark);
+  border-color: var(--border-primary-dark);
+}
+
+.review-deck-container h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+.navigation {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.navigation button {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary-color-light);
+  border: none;
+  padding: 0.7rem 1.4rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  user-select: none;
+}
+
+.navigation button:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}

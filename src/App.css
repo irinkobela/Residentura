@@ -1,0 +1,171 @@
+/* App.css */
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary-color-light);
+  padding: 0.8rem 1rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 1.5rem auto;
+  padding: 0.8rem 1.2rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary-light);
+  font-size: 1.1rem;
+}
+
+body.dark-mode .search-icon {
+  color: var(--text-secondary-dark);
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.8rem 1.2rem 0.8rem 3rem; /* Add padding for icon */
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-primary-light);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+body.dark-mode .search-bar input {
+  border-color: var(--border-primary-dark);
+}
+
+.search-bar input::placeholder {
+  color: var(--text-secondary-light);
+}
+body.dark-mode .search-bar input::placeholder {
+  color: var(--text-secondary-dark);
+}
+
+
+.navigation-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  user-select: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text-secondary-light);
+}
+
+body.dark-mode .navigation-controls {
+  color: var(--text-secondary-dark);
+}
+
+.navigation-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.navigation-buttons button {
+  padding: 0.6rem 1.3rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary);
+  color: var(--text-on-primary-color-light);
+}
+
+.navigation-buttons button:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+/* Segmented Control for Mode Toggles */
+.mode-toggle {
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-secondary-light);
+  border-radius: 0.75rem;
+  padding: 0.25rem;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+body.dark-mode .mode-toggle {
+  background-color: var(--bg-tertiary-dark);
+}
+
+.mode-toggle button {
+  background-color: var(--bg-secondary-light);
+  color: var(--text-secondary-light);
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+body.dark-mode .mode-toggle button {
+  color: var(--text-secondary-dark);
+}
+
+.mode-toggle button:hover:not(.active) {
+  background-color: var(--bg-accent-light);
+}
+
+body.dark-mode .mode-toggle button:hover:not(.active) {
+  background-color: var(--bg-accent-dark);
+}
+
+.mode-toggle button.active {
+  background-color: var(--bg-light);
+  color: var(--text-primary-light);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}
+
+body.dark-mode .mode-toggle button.active {
+  background-color: var(--bg-secondary-dark);
+  color: var(--text-primary-dark);
+}
+
+.settings-button,
+.settings-button:hover,
+.settings-button:focus,
+.settings-button:active {
+  position: absolute;
+  right: 2rem;
+  top: 25%;
+  font-size: 1.5rem;
+  font-weight: inherit;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  transform: none;
+  transition: none;
+  color: var(--text-on-primary-color-light);
+  padding: 0;
+  margin: 0;
+}
