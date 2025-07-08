@@ -1,1 +1,1 @@
-Update package.json for GitHub Pages deployment
+Update tests.json with new explanations
