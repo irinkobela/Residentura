@@ -1,1 +1,1 @@
-fix: Set PUBLIC_URL for GitHub Pages build
+Update package.json for GitHub Pages deployment
