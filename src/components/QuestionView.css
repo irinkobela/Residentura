@@ -6,9 +6,11 @@
   border-radius: 16px;
   padding: 1.8rem 2rem;
   margin: 1.2rem auto;
-  max-width: 720px;
+  width: 720px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.07);
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 
 html.dark-mode .question-card {
@@ -19,7 +21,7 @@ html.dark-mode .question-card {
 
 .question-text {
   font-size: 1.1rem; /* Slightly smaller for compactness */
-  font-weight: 600;
+  font-weight: 800;
   margin-bottom: 1rem;
   line-height: 1.5;
 }
@@ -37,7 +39,7 @@ html.dark-mode .question-card {
   border-radius: 0.5rem; /* Slightly smaller radius */
   padding: 0.6rem 1rem; /* Reduced padding */
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 800;
   cursor: pointer;
   transition: background-color 0.2s, border-color 0.2s, color 0.2s;
   text-align: left;

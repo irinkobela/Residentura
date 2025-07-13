@@ -11,7 +11,7 @@
   color: var(--text-on-primary-color-light);
   padding: 0.8rem 1rem;
   text-align: center;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 1.1rem;
   user-select: none;
   display: flex;
@@ -28,7 +28,7 @@
 .search-bar {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  width: 800px;
   margin: 1.5rem auto;
   padding: 0.8rem 1.2rem;
 }
@@ -57,15 +57,17 @@ body.dark-mode .search-icon {
 
 body.dark-mode .search-bar input {
   border-color: var(--border-primary-dark);
+  font-weight: 800;
 }
 
 .search-bar input::placeholder {
   color: var(--text-secondary-light);
+  font-weight: 800;
 }
 body.dark-mode .search-bar input::placeholder {
-  color: var(--text-secondary-dark);
+  color: var(--text-primary-dark);
+  font-weight: 800;
 }
-
 
 .navigation-controls {
   display: flex;
@@ -73,7 +75,7 @@ body.dark-mode .search-bar input::placeholder {
   align-items: center;
   padding: 1rem 0;
   user-select: none;
-  font-weight: 500;
+  font-weight: 800;
   font-size: 0.9rem;
   color: var(--text-secondary-light);
 }
@@ -85,6 +87,7 @@ body.dark-mode .navigation-controls {
 .navigation-buttons {
   display: flex;
   gap: 0.75rem;
+  
 }
 
 .navigation-buttons button {
@@ -120,7 +123,7 @@ body.dark-mode .mode-toggle {
   padding: 0.5rem 1.2rem;
   border-radius: 0.5rem;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 800;
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;

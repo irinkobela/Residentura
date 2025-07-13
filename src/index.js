@@ -7,16 +7,15 @@ import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import { QuestionProvider } from './contexts/QuestionContext';
 import { ShortcutProvider } from './contexts/ShortcutContext';
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <QuestionProvider>
-        <ShortcutProvider>
-          <App />
-        </ShortcutProvider>
-      </QuestionProvider>
+        <QuestionProvider>
+          <ShortcutProvider>
+            <App />
+          </ShortcutProvider>
+        </QuestionProvider>
     </HashRouter>
   </React.StrictMode>
 );

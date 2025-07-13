@@ -58,8 +58,8 @@
 
 .settings-menu h2 {
   margin-bottom: 1rem;
-  font-weight: 600;
-  font-size: 1.4rem;
+  font-weight: 800;
+  font-size: 1.2rem;
   text-align: center;
   color: var(--text-primary-light);
   gap: 0.5rem;
@@ -75,7 +75,7 @@
 }
 
 .setting-item span {
-  font-weight: 500;
+  font-weight: 800;
   font-size: 1rem;
   user-select: none;
   min-width: 50px;
@@ -131,7 +131,7 @@ input:checked + .slider:before {
   background-color: var(--color-primary);
   border: var(--border-secondary-dark);
   color: var(--text-on-primary-color);
-  font-weight: 600;
+  font-weight: 800;
   font-size: 1.1rem;
   border-radius: 900px;
   padding: 0.25rem 0.7rem;
@@ -155,6 +155,7 @@ input:checked + .slider:before {
   width: 100%;
   font-size: 0.9rem;
   user-select: none;
+  font-weight: 800;
 }
 
 .shortcut-setting input {
@@ -168,4 +169,5 @@ input:checked + .slider:before {
   width: 120px;
   margin-left: 1rem;
   flex-shrink: 0;
+  font-weight: 800;
 }

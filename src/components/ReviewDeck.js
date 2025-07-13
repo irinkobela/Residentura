@@ -44,20 +44,18 @@ const ReviewDeck = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [shortcutPrev, shortcutNext, shortcutExplanation, handleNext, handlePrevious, toggleExplanation, onBackToQuiz]);
 
-  // ---- THIS BLOCK MUST BE INSIDE THE FUNCTION ----
   if (reviewQuestions.length === 0) {
     return (
       <div className="review-deck-container">
         <h2>🚫 არ არის კითხვები გადასახედად</h2>
-        <button onClick={onBackToQuiz}>🔙 დაბრუნება ქვიზზე</button>
+        <button onClick={onBackToQuiz}>🔙 დაბრუნება სწავლის რეჟიმზე</button>
       </div>
     );
   }
-  // ------------------------------------------------
 
   return (
     <div className="review-deck-container">
-      <h2>🔁 გადახედვა ({currentReviewIndex + 1} / {reviewQuestions.length})</h2>
+      <h2>🔁 შეცდომების გადახედვა ({currentReviewIndex + 1} / {reviewQuestions.length})</h2>
       <QuestionView
         question={reviewQuestions[currentReviewIndex]}
         onAnswerResult={onAnswerResult}
@@ -71,7 +69,7 @@ const ReviewDeck = ({
         <button onClick={handleNext} disabled={currentReviewIndex === reviewQuestions.length - 1}>
           ▶️ შემდეგი
         </button>
-        <button onClick={onBackToQuiz}>🔙 დაბრუნება ქვიზზე</button>
+        <button onClick={onBackToQuiz}>🔙 დაბრუნება სწავლის რეჟიმზე</button>
       </div>
     </div>
   );
