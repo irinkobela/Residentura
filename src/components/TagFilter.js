@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import './TagFilter.css';
+import './TagFilter.module.css';
 
 const TagFilter = ({ allTags, selectedTags, onTagChange }) => {
 

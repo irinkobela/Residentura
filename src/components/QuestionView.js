@@ -11,36 +11,43 @@ const QuestionView = ({ question, onAnswerResult, showExplanation, toggleExplana
     setIsAnswered(false);
   }, [question]);
 
+  useEffect(() => {
+    if (showExplanation && explanationRef.current) {
+      explanationRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }, [showExplanation]);
+
   const handleAnswerClick = (answer) => {
+    // This guard prevents the user from changing their answer or re-submitting.
     if (isAnswered) return;
 
     setSelectedAnswer(answer);
     setIsAnswered(true);
-
     if (onAnswerResult) {
       onAnswerResult(question.id, answer.isCorrect);
     }
   };
 
-  const getButtonClassName = (answer) => {
-    if (!isAnswered) return "answer-button";
-    if (answer.isCorrect) return "answer-button correct";
-    if (selectedAnswer === answer && !answer.isCorrect) return "answer-button incorrect";
-    return "answer-button disabled";
-  };
-
   const handleToggleExplanation = (e) => {
     e.stopPropagation();
     toggleExplanation();
-    if (!showExplanation) {
-      setTimeout(() => {
-        explanationRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
-    }
   };
 
+  // --- MODIFIED FUNCTION ---
+  const getButtonClassName = (answer) => {
+    if (isAnswered) {
+      if (answer.isCorrect) return "answer-button correct";
+      if (selectedAnswer === answer && !answer.isCorrect) return "answer-button incorrect";
+    }
+    // All other buttons (before answering or non-relevant ones after) get the default class.
+    return "answer-button";
+  };
+  
   return (
-    <div className="question-card" onClick={toggleExplanation}>
+    <div className="question-card">
       <h2 className="question-text">❓ {question.question}</h2>
       <div className="answers-container">
         {question.answers.map((answer, index) => (
@@ -48,7 +55,6 @@ const QuestionView = ({ question, onAnswerResult, showExplanation, toggleExplana
             key={index}
             className={getButtonClassName(answer)}
             onClick={() => handleAnswerClick(answer)}
-            disabled={isAnswered}
           >
             {answer.text}
           </button>
