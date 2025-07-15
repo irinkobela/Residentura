@@ -1,7 +1,13 @@
 import React, { useState, useEffect, memo, useRef } from 'react';
 import './QuestionView.css';
 
-const QuestionView = ({ question, onAnswerResult, showExplanation, toggleExplanation }) => {
+const QuestionView = ({
+  question,
+  onAnswerResult,
+  showExplanation,
+  toggleExplanation,
+  alwaysShowCorrectAnswer // <-- NEW PROP for review mode
+}) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const explanationRef = useRef(null);
@@ -21,9 +27,7 @@ const QuestionView = ({ question, onAnswerResult, showExplanation, toggleExplana
   }, [showExplanation]);
 
   const handleAnswerClick = (answer) => {
-    // This guard prevents the user from changing their answer or re-submitting.
     if (isAnswered) return;
-
     setSelectedAnswer(answer);
     setIsAnswered(true);
     if (onAnswerResult) {
@@ -36,16 +40,17 @@ const QuestionView = ({ question, onAnswerResult, showExplanation, toggleExplana
     toggleExplanation();
   };
 
-  // --- MODIFIED FUNCTION ---
   const getButtonClassName = (answer) => {
     if (isAnswered) {
       if (answer.isCorrect) return "answer-button correct";
       if (selectedAnswer === answer && !answer.isCorrect) return "answer-button incorrect";
     }
-    // All other buttons (before answering or non-relevant ones after) get the default class.
     return "answer-button";
   };
-  
+
+  // Find the correct answer text for display
+  const correctAnswerText = question.answers.find(a => a.isCorrect)?.text;
+
   return (
     <div className="question-card">
       <h2 className="question-text">❓ {question.question}</h2>
@@ -55,11 +60,20 @@ const QuestionView = ({ question, onAnswerResult, showExplanation, toggleExplana
             key={index}
             className={getButtonClassName(answer)}
             onClick={() => handleAnswerClick(answer)}
+            disabled={isAnswered}
           >
             {answer.text}
           </button>
         ))}
       </div>
+
+      {isAnswered && (
+        <div className="correct-answer-section">
+          <p className="correct-answer-text">
+            ✅ სწორი პასუხი: <strong>{correctAnswerText}</strong>
+          </p>
+        </div>
+      )}
 
       {isAnswered && (
         <div className="explanation-section" ref={explanationRef}>
