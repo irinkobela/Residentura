@@ -10,22 +10,19 @@ const ReviewDeck = ({
   onBackToQuiz,
   showExplanation,
   toggleExplanation,
-  clearIncorrectlyAnsweredQuestions, // <-- Add this prop from parent
+  clearIncorrectlyAnsweredQuestions,
 }) => {
   const { shortcutPrev, shortcutNext, shortcutExplanation } = useShortcuts();
 
-  // Track the review queue in state
   const [reviewQueue, setReviewQueue] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Initialize the review queue when incorrectlyAnsweredQuestions changes
   useEffect(() => {
     const initialQueue = questions.filter(q => incorrectlyAnsweredQuestions.includes(q.id));
     setReviewQueue(initialQueue);
     setCurrentIndex(0);
   }, [questions, incorrectlyAnsweredQuestions]);
 
-  // Navigation handlers
   const handleNext = useCallback(() => {
     setCurrentIndex(prev => Math.min(prev + 1, reviewQueue.length - 1));
   }, [reviewQueue.length]);
@@ -34,48 +31,50 @@ const ReviewDeck = ({
     setCurrentIndex(prev => Math.max(prev - 1, 0));
   }, []);
 
-  // Mastery answer handler
   const handleMasteryAnswer = (questionId, isCorrect) => {
     if (onAnswerResult) {
       onAnswerResult(questionId, isCorrect);
     }
-
     if (isCorrect) {
-      // Remove the question from the queue
       const newQueue = reviewQueue.filter(q => q.id !== questionId);
       setReviewQueue(newQueue);
-
-      // Adjust index if needed
       setCurrentIndex(prevIndex => Math.min(prevIndex, newQueue.length - 1));
     } else {
-      // Move to next question
       setCurrentIndex(prevIndex => (prevIndex + 1) % reviewQueue.length);
     }
   };
 
-// Keyboard shortcuts
-useEffect(() => {
-  const handleKeyDown = (e) => {
-    if (e.key === shortcutNext) handleNext();
-    if (e.key === shortcutPrev) handlePrevious();
-    if (e.key === shortcutExplanation || (shortcutExplanation === ' ' && e.code === 'Space')) {
-      toggleExplanation();
-    }
-    if (e.key === 'Escape') {
-      handleBackToQuiz();
-    }
-  };
-
-  window.addEventListener('keydown', handleKeyDown);
-  return () => window.removeEventListener('keydown', handleKeyDown);
-}, [shortcutPrev, shortcutNext, shortcutExplanation, handleNext, handlePrevious, toggleExplanation, handleBackToQuiz]);
-  // When the queue is empty, show mastered message
-  const handleBackToQuiz = () => {
+  // FIX: Wrap handleBackToQuiz in useCallback and define it before useEffect
+  const handleBackToQuiz = useCallback(() => {
     if (clearIncorrectlyAnsweredQuestions) {
-      clearIncorrectlyAnsweredQuestions(); // <-- Clear incorrect questions in parent
+      clearIncorrectlyAnsweredQuestions();
     }
     onBackToQuiz();
-  };
+  }, [clearIncorrectlyAnsweredQuestions, onBackToQuiz]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === shortcutNext) handleNext();
+      if (e.key === shortcutPrev) handlePrevious();
+      if (e.key === shortcutExplanation || (shortcutExplanation === ' ' && e.code === 'Space')) {
+        toggleExplanation();
+      }
+      if (e.key === 'Escape') {
+        handleBackToQuiz();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [
+    shortcutPrev,
+    shortcutNext,
+    shortcutExplanation,
+    handleNext,
+    handlePrevious,
+    toggleExplanation,
+    handleBackToQuiz
+  ]);
 
   if (reviewQueue.length === 0) {
     return (
@@ -87,7 +86,6 @@ useEffect(() => {
     );
   }
 
-  // Render current question and navigation
   const currentQuestion = reviewQueue[currentIndex];
 
   return (
@@ -98,7 +96,7 @@ useEffect(() => {
         onAnswerResult={handleMasteryAnswer}
         showExplanation={showExplanation}
         toggleExplanation={toggleExplanation}
-        alwaysShowCorrectAnswer={true} // <-- Always show correct answer in review
+        alwaysShowCorrectAnswer={true}
       />
       <div className="navigation">
         <button onClick={handlePrevious} disabled={currentIndex === 0}>
