@@ -53,23 +53,22 @@ const ReviewDeck = ({
     }
   };
 
-  // Keyboard shortcuts
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === shortcutNext) handleNext();
-      if (e.key === shortcutPrev) handlePrevious();
-      if (e.key === shortcutExplanation || (shortcutExplanation === ' ' && e.code === 'Space')) {
-        toggleExplanation();
-      }
-      if (e.key === 'Escape') {
-        handleBackToQuiz();
-      }
-    };
+// Keyboard shortcuts
+useEffect(() => {
+  const handleKeyDown = (e) => {
+    if (e.key === shortcutNext) handleNext();
+    if (e.key === shortcutPrev) handlePrevious();
+    if (e.key === shortcutExplanation || (shortcutExplanation === ' ' && e.code === 'Space')) {
+      toggleExplanation();
+    }
+    if (e.key === 'Escape') {
+      handleBackToQuiz();
+    }
+  };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [shortcutPrev, shortcutNext, shortcutExplanation, handleNext, handlePrevious, toggleExplanation]);
-
+  window.addEventListener('keydown', handleKeyDown);
+  return () => window.removeEventListener('keydown', handleKeyDown);
+}, [shortcutPrev, shortcutNext, shortcutExplanation, handleNext, handlePrevious, toggleExplanation, handleBackToQuiz]);
   // When the queue is empty, show mastered message
   const handleBackToQuiz = () => {
     if (clearIncorrectlyAnsweredQuestions) {
