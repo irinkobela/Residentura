@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useShortcuts } from '../contexts/ShortcutContext';
 import QuestionView from './QuestionView';
 import './ReviewDeck.module.css';
