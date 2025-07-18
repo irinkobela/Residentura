@@ -6,7 +6,7 @@ const QuestionView = ({
   onAnswerResult,
   showExplanation,
   toggleExplanation,
-  alwaysShowCorrectAnswer // <-- NEW PROP for review mode
+  alwaysShowCorrectAnswer 
 }) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -70,7 +70,7 @@ const QuestionView = ({
       {isAnswered && (
         <div className="correct-answer-section">
           <p className="correct-answer-text">
-            ✅ სწორი პასუხი: <strong>{correctAnswerText}</strong>
+            ✅ სწორი პასუხია: <strong>{correctAnswerText}</strong>
           </p>
         </div>
       )}

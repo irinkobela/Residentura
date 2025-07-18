@@ -21,9 +21,15 @@ const StudyMode = () => {
     const [isReviewMode, setIsReviewMode] = useState(false);
     const [showExplanation, setShowExplanation] = useState(false);
 
+    const [jumpToValue, setJumpToValue] = useState((currentQuestionIndex + 1).toString());
+
     const allTags = React.useMemo(() => Array.from(new Set(questions.flatMap(q => q.tags || []))), [questions]);
 
     const filteredQuestions = React.useMemo(() => {
+        // If there are no filters, don't even bother filtering.
+        if (searchQuery === '' && selectedTags.length === 0) {
+            return questions;
+        }
         return questions.filter(q => {
             const matchesSearch = q.question.toLowerCase().includes(searchQuery.toLowerCase());
             const matchesTags = selectedTags.length === 0 || q.tags?.some(tag => selectedTags.includes(tag));
@@ -36,6 +42,12 @@ const StudyMode = () => {
             setCurrentQuestionIndex(Math.max(0, filteredQuestions.length - 1));
         }
     }, [filteredQuestions, currentQuestionIndex, setCurrentQuestionIndex]);
+
+    useEffect(() => {
+        // This keeps the input field's value in sync with the current question index.
+        setJumpToValue((currentQuestionIndex + 1).toString());
+    }, [currentQuestionIndex]);
+
 
     const handleAnswerResult = useCallback((questionId, isCorrect) => {
         if (!isCorrect) {
@@ -56,10 +68,38 @@ const StudyMode = () => {
     const toggleExplanation = useCallback(() => {
         setShowExplanation(prev => !prev);
     }, []);
-  // ⌨️ Custom Keyboard Navigation
 
+    // --- MODIFIED: This function now overrides filters ---
+    const handleJumpToQuestion = () => {
+        const questionNumber = parseInt(jumpToValue, 10);
+
+        // Validate against the TOTAL number of questions, not the filtered list.
+        if (!isNaN(questionNumber) && questionNumber >= 1 && questionNumber <= questions.length) {
+            
+            // --- NEW LOGIC ---
+            // 1. Clear any active filters.
+            setSelectedTags([]);
+            setSearchQuery('');
+
+            // 2. Jump to the desired question index in the full, unfiltered list.
+            // React batches these state updates, so the component will re-render once
+            // with the filters cleared and the correct question displayed.
+            setCurrentQuestionIndex(questionNumber - 1);
+
+        } else {
+            // If the input is invalid, reset it to the currently viewed question number.
+            setJumpToValue((currentQuestionIndex + 1).toString());
+            // The warning should now refer to the total number of questions.
+            alert(`Please enter a number between 1 and ${questions.length}.`);
+        }
+    };
+
+    // Keyboard Navigation
     useEffect(() => {
         const handleKeyDown = (e) => {
+            if (e.target.tagName.toLowerCase() === 'input') {
+                return;
+            }
             if (e.key === shortcutNext) handleNext();
             if (e.key === shortcutPrev) handlePrevious();
             if (e.key === shortcutExplanation || (shortcutExplanation === 'Space' && e.code === 'Space')) toggleExplanation();
@@ -92,7 +132,6 @@ const StudyMode = () => {
             </header>
 
             <div className="main-layout-container">
-                {/* --- 1. The Left Sidebar (Controls) --- */}
                 <aside className="sidebar">
                     <div className="search-bar">
                         <input
@@ -111,9 +150,7 @@ const StudyMode = () => {
                     </Suspense>
                 </aside>
 
-                {/* --- 2. The Right Content Area (Modes + Questions) --- */}
                 <main className="content-area">
-                    {/* Mode Toggles are now here */}
                     <div className="mode-toggle">
                         <button onClick={() => navigate('/quiz')}>🎯 ქვიზ რეჟიმი</button>
                         <button
@@ -151,7 +188,28 @@ const StudyMode = () => {
                                         toggleExplanation={toggleExplanation}
                                     />
                                     <div className="navigation-controls">
-                                        <span>📍 კითხვა {currentQuestionIndex + 1} / {filteredQuestions.length}</span>
+                                        <div className="question-jumper">
+                                            <span>📍 კითხვა</span>
+                                            <input
+                                                type="number"
+                                                className="question-jump-input"
+                                                value={jumpToValue}
+                                                onChange={(e) => setJumpToValue(e.target.value)}
+                                                onKeyDown={(e) => {
+                                                    if (e.key === 'Enter') {
+                                                        handleJumpToQuestion();
+                                                        e.target.blur(); 
+                                                    }
+                                                }}
+                                                onBlur={handleJumpToQuestion}
+                                                min="1"
+                                                // The max should reflect the total number of questions for validation
+                                                max={questions.length}
+                                            />
+                                            {/* This will now update to show the total when filters are cleared */}
+                                            <span>/ {filteredQuestions.length}</span>
+                                        </div>
+                                        
                                         <div className="navigation-buttons">
                                             <button onClick={handlePrevious} disabled={currentQuestionIndex === 0}>◀️ წინა</button>
                                             <button onClick={handleNext} disabled={currentQuestionIndex >= filteredQuestions.length - 1}>▶️ შემდეგი</button>

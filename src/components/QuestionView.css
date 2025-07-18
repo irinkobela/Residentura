@@ -108,9 +108,21 @@ html.dark-mode .answer-button:hover:not([disabled]) {
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--text-primary-light);
+  font-weight: 800;
 }
 
 html.dark-mode .explanation-text {
   background-color: var(--bg-tertiary-dark);
   color: var(--text-primary-dark);
 }
+
+.correct-answer-text
+  {
+    font-weight: 800;
+    color: var(--color-correct);
+    margin-top: 1rem;
+  }
+
+  .dark-mode .correct-answer-text {
+    color: var(--color-correct-dark);
+  }

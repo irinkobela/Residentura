@@ -34,7 +34,7 @@
 }
 
 .dark-mode .tag-filter-label {
-  color: var(--text-primary-dark);
+  color: var(--text-primary-light);
 }
 
 /* Clear Button */

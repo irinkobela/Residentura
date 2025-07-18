@@ -31,17 +31,14 @@ html, body {
     font-size: 1.2rem;
 }
 
-
-/* --- MODIFIED STYLES for Search and Mode Toggle --- */
-
 .search-bar {
-    width: 100%; 
+    width: 85%; 
     margin: 0;   
     padding: 0;  
 }
 
 .search-bar input {
-    width: 100%;
+    width: 85%;
     padding: 0.8rem 1.2rem;
     border-radius: 0.75rem;
     border: 1px solid var(--border-primary-light);
@@ -66,13 +63,12 @@ body.dark-mode .search-bar input::placeholder {
 
 .mode-toggle {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     background-color: var(--bg-secondary-light);
-    border-radius: 0.75rem;
+    border-radius: 0.50rem;
     padding: 0.25rem;
     width: 100%; 
-    margin: 0;   
-    box-sizing: border-box;
+    margin: 0;  
 }
 
 body.dark-mode .mode-toggle {
@@ -188,13 +184,14 @@ body.dark-mode .navigation-controls {
 .sidebar {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; 
+    gap: 1.2rem; 
 }
 
 .content-area {
-    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
 }
 
 .welcome-message {
@@ -258,7 +255,7 @@ body.dark-mode .welcome-message {
   text-align: start;
 }
 .dark-mode .tag-filter-label {
-  color: var(--text-primary-dark);
+  color: var(--text-primary-light);
 }
 
 .clear-tags-button {
@@ -331,4 +328,54 @@ body.dark-mode .tag-pill.active {
   color: var(--text-on-primary-color-dark);
   border-color: var(--color-primary);
   box-shadow: 0 0 0 2px rgba(105, 98, 232, 0.4); /* subtle glow matching primary */
+}
+
+/* Add these styles to your App.css file */
+
+.navigation-controls {
+  /* This ensures the new jumper and the buttons are spaced out */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.question-jumper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  color: #3730a3; /* Indigo-800 */
+  background-color: #eef2ff; /* Indigo-50 */
+  border: 1px solid #c7d2fe; /* Indigo-200 */
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.question-jump-input {
+  width: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1em;
+  color: #3730a3;
+  border: none;
+  background-color: transparent;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.question-jump-input:focus {
+  outline: 2px solid #6366f1; /* Indigo-500 */
+  background-color: #ffffff;
+}
+.dark-mode .question-jump-input {
+  color: #ffffff;
+  background-color: var(--bg-secondary-dark);
+  border: 1px solid #334155; /* Gray-700 */
+}
+/* Hides the arrows on number inputs for a cleaner look */
+.question-jump-input::-webkit-inner-spin-button,
+.question-jump-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
