@@ -2,7 +2,7 @@
   "name": "residentura-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/Residentura",
+  "homepage": "https://admin.github.io/residentura-app",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
