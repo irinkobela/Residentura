@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/residentura-app/static/css/main.dc773fea.css",
-    "main.js": "/residentura-app/static/js/main.f0560339.js",
+    "main.js": "/residentura-app/static/js/main.323c0402.js",
     "static/css/652.86f5aa57.chunk.css": "/residentura-app/static/css/652.86f5aa57.chunk.css",
     "static/js/652.fcfb8381.chunk.js": "/residentura-app/static/js/652.fcfb8381.chunk.js",
     "static/css/966.6e741eee.chunk.css": "/residentura-app/static/css/966.6e741eee.chunk.css",
     "static/js/966.e305977e.chunk.js": "/residentura-app/static/js/966.e305977e.chunk.js",
-    "static/css/542.76b7ea9d.chunk.css": "/residentura-app/static/css/542.76b7ea9d.chunk.css",
+    "static/css/542.9b0ec2b4.chunk.css": "/residentura-app/static/css/542.9b0ec2b4.chunk.css",
     "static/js/542.b75553ea.chunk.js": "/residentura-app/static/js/542.b75553ea.chunk.js",
-    "static/css/352.6117b680.chunk.css": "/residentura-app/static/css/352.6117b680.chunk.css",
+    "static/css/352.d6f441b4.chunk.css": "/residentura-app/static/css/352.d6f441b4.chunk.css",
     "static/js/352.64429bc9.chunk.js": "/residentura-app/static/js/352.64429bc9.chunk.js",
     "static/css/944.86f5aa57.chunk.css": "/residentura-app/static/css/944.86f5aa57.chunk.css",
     "static/js/944.3fde63ff.chunk.js": "/residentura-app/static/js/944.3fde63ff.chunk.js",
@@ -16,14 +16,14 @@
     "service-worker.js": "/residentura-app/service-worker.js",
     "index.html": "/residentura-app/index.html",
     "main.dc773fea.css.map": "/residentura-app/static/css/main.dc773fea.css.map",
-    "main.f0560339.js.map": "/residentura-app/static/js/main.f0560339.js.map",
+    "main.323c0402.js.map": "/residentura-app/static/js/main.323c0402.js.map",
     "652.86f5aa57.chunk.css.map": "/residentura-app/static/css/652.86f5aa57.chunk.css.map",
     "652.fcfb8381.chunk.js.map": "/residentura-app/static/js/652.fcfb8381.chunk.js.map",
     "966.6e741eee.chunk.css.map": "/residentura-app/static/css/966.6e741eee.chunk.css.map",
     "966.e305977e.chunk.js.map": "/residentura-app/static/js/966.e305977e.chunk.js.map",
-    "542.76b7ea9d.chunk.css.map": "/residentura-app/static/css/542.76b7ea9d.chunk.css.map",
+    "542.9b0ec2b4.chunk.css.map": "/residentura-app/static/css/542.9b0ec2b4.chunk.css.map",
     "542.b75553ea.chunk.js.map": "/residentura-app/static/js/542.b75553ea.chunk.js.map",
-    "352.6117b680.chunk.css.map": "/residentura-app/static/css/352.6117b680.chunk.css.map",
+    "352.d6f441b4.chunk.css.map": "/residentura-app/static/css/352.d6f441b4.chunk.css.map",
     "352.64429bc9.chunk.js.map": "/residentura-app/static/js/352.64429bc9.chunk.js.map",
     "944.86f5aa57.chunk.css.map": "/residentura-app/static/css/944.86f5aa57.chunk.css.map",
     "944.3fde63ff.chunk.js.map": "/residentura-app/static/js/944.3fde63ff.chunk.js.map",
@@ -31,6 +31,6 @@
   },
   "entrypoints": [
     "static/css/main.dc773fea.css",
-    "static/js/main.f0560339.js"
+    "static/js/main.323c0402.js"
   ]
 }
